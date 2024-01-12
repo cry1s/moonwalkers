@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class ProjectUser extends Pivot
@@ -20,5 +21,9 @@ class ProjectUser extends Pivot
 
     public function characters() : BelongsToMany {
         return $this->belongsToMany(Character::class, "character_actors");
+    }
+
+    public function tasks() : HasMany {
+        return $this->hasMany(Task::class);
     }
 }
