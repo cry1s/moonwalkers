@@ -3,9 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Faker\Provider\Base;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -65,8 +67,8 @@ class User extends Authenticatable
         return $this->hasMany(RatingLog::class);
     }
 
-    public function projects(): HasManyThrough
+    public function projects(): BelongsToMany
     {
-        return $this->hasManyThrough(Project::class, ProjectUser::class);
+        return $this->BelongsToMany(Project::class)->using(ProjectUser::class);
     }
 }
