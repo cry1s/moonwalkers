@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\HeadRole;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,12 +14,16 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('nickname');
+            $table->text('content');
+            $table->string('avatar_preview_link');
+            $table->text('voice_description');
+            $table->foreignIdFor(HeadRole::class);
+            $table->string('vk_oauth_token');
+            $table->string('tg_oauth_token');
             $table->timestamps();
+
+            $table->foreign("head_role_id")->references("id")->on("head_roles")->restrictOnDelete()->cascadeOnUpdate();
         });
     }
 
