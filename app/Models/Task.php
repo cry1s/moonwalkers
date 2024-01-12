@@ -11,8 +11,10 @@ class Task extends Model
     use HasFactory;
 
     protected $fillable = [
-        'year',
-        'season',
+        'worker_id',
+        'episode_id',
+        'content',
+        'is_rated',
     ];
 
     public function episode() : BelongsTo {
