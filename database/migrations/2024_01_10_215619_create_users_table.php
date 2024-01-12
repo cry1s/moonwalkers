@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignIdFor(HeadRole::class);
             $table->string('vk_oauth_token');
             $table->string('tg_oauth_token');
+            $table->boolean('approved')->default(false);
             $table->timestamps();
 
             $table->foreign("head_role_id")->references("id")->on("head_roles")->restrictOnDelete()->cascadeOnUpdate();

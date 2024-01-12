@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -46,4 +47,20 @@ class User extends Authenticatable
         'tg_oauth_token' => 'hashed',
         'vk_oauth_token' => 'hashed',
     ];
+
+    protected $with = [
+        'userWorkRoles',
+    ];
+
+    public function userWorkRoles() : HasMany {
+        return $this->hasMany(UserWorkRole::class);
+    }
+
+    public function activityLogs() : HasMany {
+        return $this->hasMany(ActivityLog::class);
+    }
+
+    public function ratingLogs() : HasMany {
+        return $this->hasMany(RatingLog::class);
+    }
 }
