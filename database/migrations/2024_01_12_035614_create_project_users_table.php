@@ -20,7 +20,7 @@ return new class extends Migration
             $table->enum('work_role', ['tutor', 'techie', 'actor', 'designer']);
             $table->timestamps();
 
-            $table->unique(['user_id, project_id', 'work_role']);
+            $table->unique(['user_id', 'project_id', 'work_role']);
             $table->foreign("user_id")->references("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign("project_id")->references("id")->on("projects")->cascadeOnDelete()->cascadeOnUpdate();
         });

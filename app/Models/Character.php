@@ -19,4 +19,8 @@ class Character extends Model
     public function projects() : BelongsToMany {
         return $this->belongsToMany(Project::class, "project_characters");
     }
+
+    public function actors() : BelongsToMany {
+        return $this->belongsToMany(ProjectUser::class, "character_actors");
+    }
 }
