@@ -15,6 +15,7 @@ class Task extends Model
         'episode_id',
         'content',
         'is_rated',
+        'status',
     ];
 
     public function episode() : BelongsTo {

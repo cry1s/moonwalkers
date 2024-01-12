@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(Episode::class)->nullable();
             $table->text('content');
             $table->boolean('is_rated');
+            $table->enum('status', ['in_work', 'in_approval', 'in_fixes', 'done']);
             $table->timestamps();
         });
     }
