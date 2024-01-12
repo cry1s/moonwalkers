@@ -71,7 +71,7 @@ class User extends Authenticatable
         return $this->BelongsToMany(Project::class)->using(ProjectUser::class);
     }
 
-    public function activeRotations() : HasMany {
-        return $this->hasMany(Rotation::class)->where('is_active', true);
+    public function rotations() : HasMany {
+        return $this->hasMany(Rotation::class);
     }
 }

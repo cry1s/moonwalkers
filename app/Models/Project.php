@@ -35,4 +35,8 @@ class Project extends Model
     public function episodes(): HasMany {
         return $this->hasMany(Episode::class);
     }
+
+    public function messages(): HasMany {
+        return $this->hasMany(Message::class);
+    }
 }
