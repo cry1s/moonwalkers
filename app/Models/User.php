@@ -67,8 +67,11 @@ class User extends Authenticatable
         return $this->hasMany(RatingLog::class);
     }
 
-    public function projects(): BelongsToMany
-    {
+    public function projects(): BelongsToMany {
         return $this->BelongsToMany(Project::class)->using(ProjectUser::class);
+    }
+
+    public function activeRotations() : HasMany {
+        return $this->hasMany(Rotation::class)->where('is_active', true);
     }
 }

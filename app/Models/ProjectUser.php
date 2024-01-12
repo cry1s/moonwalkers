@@ -26,4 +26,8 @@ class ProjectUser extends Pivot
     public function tasks() : HasMany {
         return $this->hasMany(Task::class);
     }
+
+    public function rotations() : HasMany {
+        return $this->hasMany(Rotation::class);
+    }
 }
