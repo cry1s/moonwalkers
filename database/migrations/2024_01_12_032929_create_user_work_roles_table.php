@@ -18,6 +18,7 @@ return new class extends Migration
             $table->enum('role', ['tutor', 'techie', 'actor', 'releaser', 'designer']);
             $table->timestamps();
 
+            $table->foreign("user_id")->references("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->unique('role', 'user_id');
         });
     }
