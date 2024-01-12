@@ -21,6 +21,9 @@ return new class extends Migration
             $table->boolean('is_rated');
             $table->enum('status', ['in_work', 'in_approval', 'in_fixes', 'done']);
             $table->timestamps();
+
+            $table->foreign("worker_id")->references("id")->on("project_users")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign("episode_id")->references("id")->on("episodes")->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
