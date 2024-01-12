@@ -10,6 +10,12 @@ class ImportanceScoreActor extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'importance_id',
+        'max_time',
+        'score'
+    ];
+
     public function importance() : BelongsTo {
         return $this->belongsTo(Importance::class);        
     }

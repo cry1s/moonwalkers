@@ -11,6 +11,14 @@ class Project extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'importance_id',
+        'content',
+        'poster_preview_link',
+        'status'
+    ];
+
     public function characters() : BelongsToMany {
         return $this->belongsToMany(Character::class, "project_characters");
     }
