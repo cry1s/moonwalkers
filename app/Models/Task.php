@@ -30,4 +30,8 @@ class Task extends Model
     public function files() : HasMany {
         return $this->hasMany(TaskFile::class);
     }
+
+    public function comments() : HasMany {
+        return $this->hasMany(TaskComment::class);
+    }
 }
