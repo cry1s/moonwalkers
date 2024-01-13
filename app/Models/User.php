@@ -46,10 +46,10 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
-    protected $casts = [
-        'tg_oauth_token' => 'hashed',
-        'vk_oauth_token' => 'hashed',
-    ];
+    // protected $casts = [
+    //     'tg_oauth_token' => 'hashed',
+    //     'vk_oauth_token' => 'hashed',
+    // ];
 
     protected $with = [
         'userWorkRoles',

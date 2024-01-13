@@ -16,15 +16,15 @@ return new class extends Migration
             $table->id();
             $table->string('nickname');
             $table->text('content');
-            $table->string('avatar_preview_link');
+            $table->string('avatar_preview_link')->nullable();
             $table->text('voice_description');
-            $table->foreignIdFor(HeadRole::class);
-            $table->string('vk_oauth_token');
-            $table->string('tg_oauth_token');
+            $table->foreignIdFor(HeadRole::class)->nullable();
+            $table->string('vk_oauth_token')->unique()->nullable();
+            $table->string('tg_oauth_token')->unique()->nullable();
             $table->boolean('approved')->default(false);
             $table->timestamps();
 
-            $table->foreign("head_role_id")->references("id")->on("head_roles")->restrictOnDelete()->cascadeOnUpdate();
+            $table->foreign("head_role_id")->references("id")->on("head_roles")->nullOnDelete()->cascadeOnUpdate();
         });
     }
 
